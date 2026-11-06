@@ -1,0 +1,6 @@
+{
+  "name": "AquaDrop - iOS Water Reminder",
+  "description": "Smart iOS water drinking reminder with custom intervals, WhatsApp voice notes, timer auto-reset on intake, friends progress sharing, and active hours.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
