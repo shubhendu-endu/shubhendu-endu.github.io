@@ -1,14 +1,15 @@
 import React from 'react';
-import { Flame, Settings, Droplet, Volume2 } from 'lucide-react';
+import { Flame, Settings, Droplet, QrCode } from 'lucide-react';
 import { PWAInstallButton } from './PWAInstallButton';
 import { unlockAudio } from '../utils/audioEngine';
 
 interface HeaderProps {
   streakDays: number;
   onOpenSettings: () => void;
+  onOpenPhoneAccess?: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ streakDays, onOpenSettings }) => {
+export const Header: React.FC<HeaderProps> = ({ streakDays, onOpenSettings, onOpenPhoneAccess }) => {
   return (
     <header className="sticky top-0 z-40 w-full pt-safe px-4 pb-3 ios-glass border-b border-slate-800/80">
       <div className="max-w-md mx-auto flex items-center justify-between">
@@ -30,9 +31,20 @@ export const Header: React.FC<HeaderProps> = ({ streakDays, onOpenSettings }) =>
         </div>
 
         {/* Action Controls */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5">
           {/* PWA Install Button */}
           <PWAInstallButton />
+
+          {/* QR code / Open on Phone Button */}
+          {onOpenPhoneAccess && (
+            <button
+              onClick={onOpenPhoneAccess}
+              className="w-8 h-8 rounded-full bg-slate-800/80 hover:bg-slate-700 border border-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition active:scale-95"
+              title="Open on iPhone (Scan QR Code)"
+            >
+              <QrCode className="w-3.5 h-3.5 text-cyan-400" />
+            </button>
+          )}
 
           {/* Streak Badge */}
           <div className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 text-xs font-bold shadow-sm">

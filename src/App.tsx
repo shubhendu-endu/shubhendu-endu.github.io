@@ -13,6 +13,7 @@ import { SettingsModal } from './components/SettingsModal';
 import { ReminderAlertModal } from './components/ReminderAlertModal';
 import { IOSInstallGuide } from './components/IOSInstallGuide';
 import { LockScreenInfoModal } from './components/LockScreenInfoModal';
+import { PhoneAccessModal } from './components/PhoneAccessModal';
 import { unlockAudio } from './utils/audioEngine';
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isIOSGuideOpen, setIsIOSGuideOpen] = useState(false);
   const [isLockScreenOpen, setIsLockScreenOpen] = useState(false);
+  const [isPhoneAccessOpen, setIsPhoneAccessOpen] = useState(false);
 
   const {
     settings,
@@ -85,6 +87,7 @@ export default function App() {
       <Header
         streakDays={streakDays}
         onOpenSettings={() => setIsSettingsOpen(true)}
+        onOpenPhoneAccess={() => setIsPhoneAccessOpen(true)}
       />
 
       {/* Main Content Area */}
@@ -215,6 +218,12 @@ export default function App() {
         onClose={() => setIsLockScreenOpen(false)}
         settings={settings}
         onShowIOSGuide={() => setIsIOSGuideOpen(true)}
+      />
+
+      {/* Phone QR Access Modal */}
+      <PhoneAccessModal
+        isOpen={isPhoneAccessOpen}
+        onClose={() => setIsPhoneAccessOpen(false)}
       />
 
       {/* Active Hydration Reminder Alert Dialog */}
